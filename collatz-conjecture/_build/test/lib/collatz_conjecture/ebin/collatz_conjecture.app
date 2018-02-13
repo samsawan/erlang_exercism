@@ -1,7 +1,0 @@
-{application,collatz_conjecture,
-             [{description,"exercism.io - collatz-conjecture"},
-              {vsn,"0.0.1"},
-              {modules,[collatz_conjecture]},
-              {registered,[]},
-              {applications,[kernel,stdlib]},
-              {env,[]}]}.

@@ -5,18 +5,20 @@
 response([]) -> "Fine. Be that way!";
 response(String) ->
 	Response =
-	lists:foldl(fun(TransformFunc, BobResponse) ->
-		case BobResponse of
-			{false, String} -> TransformFunc(String);
-			FinalResponse -> FinalResponse
-		end
-	end,
-	{false, String},
-	[
-		fun check_for_silence/1,
-		fun check_for_shouting/1,
-		fun check_for_question/1
-	]),
+	lists:foldl(
+		fun(TransformFunc, BobResponse) ->
+			case BobResponse of
+				{false, String} -> TransformFunc(String);
+				FinalResponse -> FinalResponse
+			end
+		end,
+		{false, String},
+		[
+			fun check_for_silence/1,
+			fun check_for_shouting/1,
+			fun check_for_question/1
+		]
+	),
 	case element(1, Response) of
 		true -> element(2, Response);
 		false -> "Whatever."
@@ -25,9 +27,7 @@ response(String) ->
 test_version() -> 2.
 
 check_for_silence(String) ->
-	A = clear_whitespace(String),
-	io:format("samsawan 	HERES A: ~p", [A]),
-	case A of
+	case clear_whitespace(String) of
 		"" -> {true, "Fine. Be that way!"};
 		_ -> {false, String}
 	end.

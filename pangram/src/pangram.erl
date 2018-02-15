@@ -5,13 +5,14 @@
 -define(ALL_LETTERS, "abcdefghijklmnopqrstuvwxyz").
 
 is_pangram(Sentence) ->
-    TruncatedList =
+    UnusedLetters =
     lists:foldl(
-    	fun(Char, LetterList) -> lists:delete(Char, LetterList) end,
+    	fun(_, "") -> "";
+    	   (Char, RemainingLetters) -> lists:delete(Char, RemainingLetters) end,
     	?ALL_LETTERS,
     	string:to_lower(Sentence)
   	),
-  	case TruncatedList of
+  	case UnusedLetters of
   		"" -> true;
   		_ -> false
   	end.

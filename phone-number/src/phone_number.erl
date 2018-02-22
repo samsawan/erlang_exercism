@@ -6,11 +6,13 @@ number(String) ->
 	CleanedNumber = clean_number(String),
 	valid_number(CleanedNumber).
 
-areacode(String) ->
-  undefined.
+areacode(String) -> string:sub_string(String, 1, 3).
 
 pretty_print(String) ->
-  undefined.
+	ValidNumber = valid_number(String),
+	"(" ++ areacode(ValidNumber) ++ ") " ++
+	string:sub_string(ValidNumber, 4, 6) ++
+	"-" ++ string:sub_string(ValidNumber, 7, 10).
 
 test_version() -> 1.
 

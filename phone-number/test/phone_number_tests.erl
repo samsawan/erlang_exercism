@@ -18,12 +18,12 @@ invalid_when_eleven_digits_test() ->
 invalid_when_nine_digits_test() ->
   ?assertEqual("0000000000", phone_number:number("123456789")).
 
-% area_code_test() ->
-%   ?assertEqual("123", phone_number:areacode("1234567890")).
+area_code_test() ->
+  ?assertEqual("123", phone_number:areacode("1234567890")).
 
-% pretty_print_test() ->
-%   ?assertEqual("(123) 456-7890", phone_number:pretty_print("1234567890")),
-%   ?assertEqual("(123) 456-7890", phone_number:pretty_print("11234567890")).
+pretty_print_test() ->
+  ?assertEqual("(123) 456-7890", phone_number:pretty_print("1234567890")),
+  ?assertEqual("(123) 456-7890", phone_number:pretty_print("11234567890")).
 
 version_test() ->
   ?assertMatch(1, phone_number:test_version()).

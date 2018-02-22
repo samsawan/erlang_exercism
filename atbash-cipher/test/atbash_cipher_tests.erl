@@ -24,25 +24,25 @@ encode_O_M_G_test() ->
 encode_long_word_test() ->
     ?assertEqual("nrmwy oldrm tob", encode("mindblowingly")).
 
-% encode_numbers_test() ->
-%     ?assertEqual("gvhgr mt123 gvhgr mt",
-%                  encode("Testing, 1 2 3, testing.")).
+encode_numbers_test() ->
+    ?assertEqual("gvhgr mt123 gvhgr mt",
+                 encode("Testing, 1 2 3, testing.")).
 
-% encode_sentence_test() ->
-%     ?assertEqual("gifgs rhurx grlm",
-%                  encode("Truth is fiction.")).
+encode_sentence_test() ->
+    ?assertEqual("gifgs rhurx grlm",
+                 encode("Truth is fiction.")).
 
-% encode_all_things_test() ->
-%     Plaintext = "The quick brown fox jumps over the lazy dog.",
-%     Ciphertext = "gsvjf rxpyi ldmul cqfnk hlevi gsvoz abwlt",
-%     ?assertEqual(Ciphertext, encode(Plaintext)).
+encode_all_things_test() ->
+    Plaintext = "The quick brown fox jumps over the lazy dog.",
+    Ciphertext = "gsvjf rxpyi ldmul cqfnk hlevi gsvoz abwlt",
+    ?assertEqual(Ciphertext, encode(Plaintext)).
 
-% decode_word_test() ->
-%     ?assertEqual("exercism", decode("vcvix rhn")).
+decode_word_test() ->
+    ?assertEqual("exercism", decode("vcvix rhn")).
 
-% decode_sentence_test() ->
-%     ?assertEqual("anobstacleisoftenasteppingstone",
-%                  decode("zmlyh gzxov rhlug vmzhg vkkrm thglm v")).
+decode_sentence_test() ->
+    ?assertEqual("anobstacleisoftenasteppingstone",
+                 decode("zmlyh gzxov rhlug vmzhg vkkrm thglm v")).
 
-% version_test() ->
-%   ?assertMatch(1, atbash_cipher:test_version()).
+version_test() ->
+  ?assertMatch(1, atbash_cipher:test_version()).

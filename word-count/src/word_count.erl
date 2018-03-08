@@ -36,9 +36,9 @@ count_discrete_words(DiscreteWords) ->
 is_valid_char(Char) ->
 	is_digit(Char) orelse is_lowercase_letter(Char) orelse is_uppercase_letter(Char).
 
-is_digit(Char) -> Char > 47 andalso Char < 58.
-is_lowercase_letter(Char) -> Char > 96 andalso Char < 123.
-is_uppercase_letter(Char) -> Char > 66 andalso Char < 91.
+is_digit(Char) -> Char >= $0 andalso Char =< $9.
+is_lowercase_letter(Char) -> Char >= $a andalso Char =< $z.
+is_uppercase_letter(Char) -> Char >= $A andalso Char =< $Z.
 
 add_constructed_word("", WordList) -> WordList;
 add_constructed_word(ContructedWord, WordList) -> [ContructedWord | WordList].

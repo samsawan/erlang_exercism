@@ -33,33 +33,33 @@ ignore_punctuation_test() ->
      {"java", 1},
      {"javascript", 1}]).
 
-% include_numbers_test() ->
-%   assert_count(
-%     "testing, 1, 2 testing",
-%     [{"testing", 2},
-%      {"1", 1},
-%      {"2", 1}]).
+include_numbers_test() ->
+  assert_count(
+    "testing, 1, 2 testing",
+    [{"testing", 2},
+     {"1", 1},
+     {"2", 1}]).
 
-% normalize_case_test() ->
-%   assert_count(
-%     "go Go GO",
-%     [{"go", 3}]).
+normalize_case_test() ->
+  assert_count(
+    "go Go GO",
+    [{"go", 3}]).
 
-% prefix_punctuation_test() ->
-%   assert_count(
-%     "!%%#testing, 1, 2 testing",
-%     [{"testing", 2},
-%      {"1", 1},
-%      {"2", 1}]).
+prefix_punctuation_test() ->
+  assert_count(
+    "!%%#testing, 1, 2 testing",
+    [{"testing", 2},
+     {"1", 1},
+     {"2", 1}]).
 
-% symbols_are_separators_test() ->
-%   assert_count(
-%     "hey,my_spacebar_is_broken.",
-%     [{"hey", 1},
-%      {"my", 1},
-%      {"spacebar", 1},
-%      {"is", 1},
-%      {"broken", 1}]).
+symbols_are_separators_test() ->
+  assert_count(
+    "hey,my_spacebar_is_broken.",
+    [{"hey", 1},
+     {"my", 1},
+     {"spacebar", 1},
+     {"is", 1},
+     {"broken", 1}]).
 
 assert_count(S, Expect) ->
   ?assertEqual(orddict:from_list(Expect), orddict:from_list(dict:to_list(word_count:count(S)))).

@@ -10,8 +10,7 @@ is_equal(ClockA, ClockB) -> ClockA =:= ClockB.
 
 minutes_add([{hours, Hours}, {minutes, PreviousMinutes}], Minutes) -> create(Hours, PreviousMinutes + Minutes).
 
-to_string([{hours, Hours}, {minutes, Minutes}]) ->
-	format_hours(Hours) ++ ":" ++ format_minutes(Minutes).
+to_string([{hours, Hours}, {minutes, Minutes}]) -> format(Hours) ++ ":" ++ format(Minutes).
 
 test_version() -> 1.
 
@@ -24,9 +23,5 @@ roll_minutes_into_hours(Hours, Minutes) -> roll_minutes_into_hours(Hours + 1, Mi
 
 rollover_hours(Hours) -> Hours rem 24.
 
-format_minutes(Minutes) when Minutes < 10 -> unicode:characters_to_list([$0, integer_to_list(Minutes)]);
-format_minutes(Minutes) -> integer_to_list(Minutes).
-
-format_hours(Hours) when Hours < 10 -> unicode:characters_to_list([$0, integer_to_list(Hours)]);
-format_hours(Hours) -> integer_to_list(Hours).
-
+format(Unit) when Unit < 10 -> unicode:characters_to_list([$0, integer_to_list(Unit)]);
+format(Unit) -> integer_to_list(Unit).

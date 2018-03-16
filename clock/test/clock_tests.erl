@@ -22,41 +22,41 @@ create_past_the_hour_test() ->
 create_midnight_is_zero_hours_test() ->
   ?assertClockString("00:00", 24, 0).
 
-% create_hour_rolls_over_test() ->
-%   ?assertClockString("01:00", 25, 0).
+create_hour_rolls_over_test() ->
+  ?assertClockString("01:00", 25, 0).
 
-% create_hour_rolls_over_continuously_test() ->
-%   ?assertClockString("04:00", 100, 0).
+create_hour_rolls_over_continuously_test() ->
+  ?assertClockString("04:00", 100, 0).
 
-% create_sixty_minutes_is_next_hour_test() ->
-%   ?assertClockString("02:00", 1, 60).
+create_sixty_minutes_is_next_hour_test() ->
+  ?assertClockString("02:00", 1, 60).
 
-% create_minutes_roll_over_test() ->
-%   ?assertClockString("02:40", 0, 160).
+create_minutes_roll_over_test() ->
+  ?assertClockString("02:40", 0, 160).
 
-% create_minutes_roll_over_continuously_test() ->
-%   ?assertClockString("04:43", 0, 1723).
+create_minutes_roll_over_continuously_test() ->
+  ?assertClockString("04:43", 0, 1723).
 
-% create_hour_and_minutes_roll_over_test() ->
-%   ?assertClockString("03:40", 25, 160).
+create_hour_and_minutes_roll_over_test() ->
+  ?assertClockString("03:40", 25, 160).
 
-% create_hour_and_minutes_roll_over_continuously_test() ->
-%   ?assertClockString("11:01", 201, 3001).
+create_hour_and_minutes_roll_over_continuously_test() ->
+  ?assertClockString("11:01", 201, 3001).
 
-% create_hour_and_minutes_roll_over_to_exactly_midnight_test() ->
-%   ?assertClockString("00:00", 72, 8640).
+create_hour_and_minutes_roll_over_to_exactly_midnight_test() ->
+  ?assertClockString("00:00", 72, 8640).
 
-% create_negative_hour_test() ->
-%   ?assertClockString("23:15", -1, 15).
+create_negative_hour_test() ->
+  ?assertClockString("23:15", -1, 15).
 
-% create_negative_hour_rolls_over_test() ->
-%   ?assertClockString("23:00", -25, 0).
+create_negative_hour_rolls_over_test() ->
+  ?assertClockString("23:00", -25, 0).
 
-% create_negative_hour_rolls_over_continuously_test() ->
-%   ?assertClockString("05:00", -91, 0).
+create_negative_hour_rolls_over_continuously_test() ->
+  ?assertClockString("05:00", -91, 0).
 
-% create_negative_minutes_test() ->
-%   ?assertClockString("00:20", 1, -40).
+create_negative_minutes_test() ->
+  ?assertClockString("00:20", 1, -40).
 
 % create_negative_minutes_roll_over_test() ->
 %   ?assertClockString("22:20", 1, -160).

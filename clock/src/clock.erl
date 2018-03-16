@@ -3,14 +3,12 @@
 -export([create/2, is_equal/2, minutes_add/2, to_string/1, test_version/0]).
 
 create(Hours, Minutes) ->
-	{CalculatedHours, CalculatedMinutes} = add_minutes_to_hours(positive_hours(Hours), Minutes),
-	[{hours, rollover_hours(CalculatedHours)}, {minutes, CalculatedMinutes}].
+	{CalculatedHours, CalculatedMinutes} = roll_minutes_into_hours(Hours, Minutes),
+	[{hours, rollover_hours(positive_hours(CalculatedHours))}, {minutes, CalculatedMinutes}].
 
-is_equal(ClockA, ClockB) ->
-  undefined.
+is_equal(ClockA, ClockB) -> ClockA =:= ClockB.
 
-minutes_add(Clock, Minutes) ->
-  undefined.
+minutes_add([{hours, Hours}, {minutes, PreviousMinutes}], Minutes) -> create(Hours, PreviousMinutes + Minutes).
 
 to_string([{hours, Hours}, {minutes, Minutes}]) ->
 	format_hours(Hours) ++ ":" ++ format_minutes(Minutes).
@@ -20,8 +18,9 @@ test_version() -> 1.
 positive_hours(Hours) when Hours >= 0 -> Hours;
 positive_hours(Hours) -> positive_hours(Hours + 24).
 
-add_minutes_to_hours(Hours, Minutes) when Minutes < 60 -> {Hours, Minutes};
-add_minutes_to_hours(Hours, Minutes) -> add_minutes_to_hours(Hours + 1, Minutes - 60).
+roll_minutes_into_hours(Hours, Minutes) when Minutes < 60 andalso Minutes >= 0 -> {Hours, Minutes};
+roll_minutes_into_hours(Hours, Minutes) when Minutes < 0 -> roll_minutes_into_hours(Hours - 1, Minutes + 60);
+roll_minutes_into_hours(Hours, Minutes) -> roll_minutes_into_hours(Hours + 1, Minutes - 60).
 
 rollover_hours(Hours) -> Hours rem 24.
 

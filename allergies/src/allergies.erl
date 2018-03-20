@@ -5,13 +5,12 @@
 -define(KEY, [cats, pollen, chocolate, tomatoes, strawberries, shellfish, peanuts, eggs]).
 
 allergies(Score) ->
-	BaseTwo = string:right(erlang:integer_to_list(Score, 2), 8, $0),
-	io:format("~p", [BaseTwo]),
+	BaseTwo = string:right(integer_to_list(Score, 2), 8, $0),
 	FinalKey = lists:zip(BaseTwo, ?KEY),
-	Func =
+	ValidatorFunc =
 	fun({$1, Value}, Acc) -> [Value | Acc];
 		 ({$0, _}, Acc) -> Acc end,
-	lists:foldl(Func, [], FinalKey).
+	lists:foldl(ValidatorFunc, [], FinalKey).
 
 is_allergic_to(PotentialAllergy, Score) -> lists:member(PotentialAllergy, allergies(Score)).
 

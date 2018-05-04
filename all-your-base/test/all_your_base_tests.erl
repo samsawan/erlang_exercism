@@ -42,30 +42,30 @@ leading_zero_test() ->
 negative_digit_test() ->
   ?assertMatch({error, negative}, all_your_base:convert([1, -1, 1, 0, 1, 0], 2, 10)).
 
-% invalid_positiv_digit_test() ->
-%   ?assertMatch({error, not_in_base}, all_your_base:convert([1, 2, 1, 0, 1, 0], 2, 10)).
+invalid_positiv_digit_test() ->
+  ?assertMatch({error, not_in_base}, all_your_base:convert([1, 2, 1, 0, 1, 0], 2, 10)).
 
-% first_base_is_one_test() ->
-%   ?assertMatch({error, invalid_src_base}, all_your_base:convert([], 1, 10)).
+first_base_is_one_test() ->
+  ?assertMatch({error, invalid_src_base}, all_your_base:convert([], 1, 10)).
 
-% second_base_is_one_test() ->
-%   ?assertMatch({error, invalid_dst_base}, all_your_base:convert([1, 0, 1, 0, 1, 0], 2, 1)).
+second_base_is_one_test() ->
+  ?assertMatch({error, invalid_dst_base}, all_your_base:convert([1, 0, 1, 0, 1, 0], 2, 1)).
 
-% first_base_is_zero_test() ->
-%   ?assertMatch({error, invalid_src_base}, all_your_base:convert([], 0, 10)).
+first_base_is_zero_test() ->
+  ?assertMatch({error, invalid_src_base}, all_your_base:convert([], 0, 10)).
 
-% second_base_is_zero_test() ->
-%   ?assertMatch({error, invalid_dst_base}, all_your_base:convert([7], 10, 0)).
+second_base_is_zero_test() ->
+  ?assertMatch({error, invalid_dst_base}, all_your_base:convert([7], 10, 0)).
 
-% first_base_is_negative_test() ->
-%   ?assertMatch({error, invalid_src_base}, all_your_base:convert([1], -2, 10)).
+first_base_is_negative_test() ->
+  ?assertMatch({error, invalid_src_base}, all_your_base:convert([1], -2, 10)).
 
-% second_base_is_negative_test() ->
-%   ?assertMatch({error, invalid_dst_base}, all_your_base:convert([1], 2, -7)).
+second_base_is_negative_test() ->
+  ?assertMatch({error, invalid_dst_base}, all_your_base:convert([1], 2, -7)).
 
-% both_bases_are_negative_test() ->
-%   {error, Reason} = all_your_base:convert([1], -2, -7),
-%   ?assert(lists:member(Reason, [invalid_dst_base, invalid_src_base])).
+both_bases_are_negative_test() ->
+  {error, Reason} = all_your_base:convert([1], -2, -7),
+  ?assert(lists:member(Reason, [invalid_dst_base, invalid_src_base])).
 
 version_test() ->
   ?assertMatch(1, all_your_base:test_version()).

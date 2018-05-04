@@ -9,14 +9,14 @@ convert(Digits, SrcBase, DstBase) ->
 	case valid(Digits, SrcBase, DstBase) of
 		?BASE_KEY ->
 			Num = base_ten_converter(Digits, SrcBase),
-			{ok, num_to_list(Num, [], DstBase)};
+			{ok, num_to_list(Num, DstBase, [])};
 		Invalid -> Invalid
 	end.
 
 valid(Digits, SrcBase, DstBase) ->
 	lists:foldl(
 		fun(_, {error, Reason} = Error) -> Error;
-			 (VFunc, ?BASE_KEY) -> VFunc()
+			 (ValidationCheckFunc, ?BASE_KEY) -> ValidationCheckFunc()
 		end,
 		?BASE_KEY,
 		generate_validation_checks(Digits, SrcBase, DstBase)
@@ -40,10 +40,10 @@ base_ten_converter(Digits, SrcBase) ->
 		CombinedList
 ).
 
-num_to_list(0, NumList, _) ->
+num_to_list(0, _, NumList) ->
 	NumList;
-num_to_list(Num, NumList, DstBase) ->
-	num_to_list(Num div DstBase, [Num rem DstBase | NumList], DstBase).
+num_to_list(Num, DstBase, NumList) ->
+	num_to_list(Num div DstBase, DstBase, [Num rem DstBase | NumList]).
 
 negative_number_check(Digits) ->
 	case lists:any(fun(D) -> D < 0 end, Digits) of
